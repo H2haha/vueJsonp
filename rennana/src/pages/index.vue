@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="index-right">
-      <slide-show :slides="slides" :inv="invTime"></slide-show>
+     <slide-show :slides ="slides" :inv="slideSpeed" @onchange="doSomethingOnSlideChange"></slide-show>
       <div class="index-board-list">
         <div
         class="index-board-item"
@@ -45,8 +45,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import slideShow from '../components/slideShow'
+ import slideShow from '../components/slideShow'
    var jsonp = require('jsonp');
 export default {
   components: {
@@ -62,9 +61,16 @@ console.error(err.message);
 that.newsList=data.tags
 }});
 }, 
+methods:{
+     doSomethingOnSlideChange(){
+         console.log("runing")
+
+     }
+
+},
   data () {
     return {
-      invTime: 2000,
+      slideSpeed: 2000,
       slides: [
         {
           src: require('../assets/slideShow/pic1.jpg'),

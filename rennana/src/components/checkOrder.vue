@@ -20,6 +20,7 @@
 
 <script>
 import Dialog from './base/dialog'
+import {eventBus} from '../eventBus.js'
 export default {
   components: {
     thisDialog: Dialog
@@ -58,7 +59,6 @@ export default {
   }
 }
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 

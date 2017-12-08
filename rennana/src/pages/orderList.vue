@@ -5,11 +5,12 @@
       <div class="order-list-option">
         选择产品：
         <v-selection :selections="products" @on-change="productChange"></v-selection>
+       
       </div>
 
       <div class="order-list-option">
         开始日期：
-        <v-date-picker @on-change="getStartDate"></v-date-picker>
+        <v-date-picker @on-change="changeStartDate"></v-date-picker>
       </div>
 
       <div class="order-list-option">
@@ -99,8 +100,13 @@ export default {
         }
       ],
       currentOrder: 'asc',
-      tableData: []
+      // tableData: []
     }
+  },
+  computed:{
+       tableData(){
+              return this.$store.getters.getOrderList
+        }
   },
   watch: {
     query () {
@@ -109,18 +115,24 @@ export default {
   },
   methods: {
     productChange (obj) {
-      this.productId = obj.value
-      this.getList()
+      this.$store.commit('updateParams',{
+       key:'productId',
+       val:obj.value
+      })
+       this.$store.dispatch('fetchOrderList')
     },
-    getStartDate (date) {
-      this.startDate = date
-      this.getList()
+    changeStartDate (date) {
+        this.$store.commit('updateParams',{
+       key:'startDate',
+       val: date
+      })
+     this.$store.dispatch('fetchOrderList')
     },
-    getEndDate (date) {
-      this.endDate = date
-      this.getList()
-    },
-    getList () {
+    // changEndDate (date) {
+    //   this.endDate = date
+   
+    // },
+    getTableData() {
       let reqParams = {
         query: this.query,
         productId: this.productId,
@@ -150,7 +162,9 @@ export default {
     }
   },
   mounted () {
-    this.getList()
+    // this.getList()
+    this.$store.dispatch('fetchOrderList')
+    // console.log(this.$store)
   }
 }
 </script>

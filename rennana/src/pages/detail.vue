@@ -1,11 +1,11 @@
 <template>
-  <div class="detail-wrap">
+ <div class="detail-wrap">
     <div class="detail-left">
       <div class="product-board">
         <img :src="productIcon">
         <ul>
           <router-link v-for="item in products" :to="{ path: item.path }" tag="li" active-class="active">
-            {{ item.name }}
+           {{item.name}}
           </router-link>
         </ul>
       </div>
@@ -54,9 +54,9 @@ export default {
     }
   },
   computed: {
-    productIcon () {
-      return this.imgMap[this.$route.path]
-    }
+        productIcon(){
+            return this.imgMap[this.$route.path]
+        }
   }
 }
 </script>
