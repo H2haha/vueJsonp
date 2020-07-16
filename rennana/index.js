@@ -4,10 +4,10 @@ const path = require('path');
 const oss = require('ali-oss');
 
 const store = oss({
-  accessKeyId:'LTAI1t7Nwnu3Jgko',
-  accessKeySecret: 'Y852oOIWZhdYpuzatjXj9minm84dai',
-  bucket: 'rennana',
-  region: 'oss-cn-beijing',
+  accessKeyId:'',
+  accessKeySecret: '',
+  bucket: '',
+  region: '',
 });
 
 (() => {
